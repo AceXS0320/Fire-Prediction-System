@@ -54,8 +54,8 @@ This project extensively demonstrates core OOP principles:
 1. Set the required environment variables:
    - For Windows Command Prompt:
      ```
-    set SUPABASE_URL=https://osrlvvrncgxutuphvyom.supabase.co
-    set SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazg
+    set SUPABASE_URL=https://osrlvvrncgxuvyom.supabase.co
+    set SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXV9.eyJpczdXBhYmFzZSIsInJlZiI6Im9zcdnJuY2d4dXR1cGh2Iiwicm9sZSI6ImFub24iLYXQiOjE3NDjIwMTIsImV4cCI6MjAA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazg
     set DEFAULT_PREDICTOR=SMILE
     set SIMULATION_MODE_ENABLED=true
      ```
@@ -81,8 +81,8 @@ The application uses environment variables for configuration:
 
 ```properties
 # Supabase Configuration
-SUPABASE_URL=https://osrlvvrncgxutuphvyom.supabase.co/
-SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+SUPABASE_URL=https://osrlvvrncgxu.supabase.co/
+SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cXVCJ9...
 
 # Application Configuration
 APP_NAME=Fire Prediction System (optional)
