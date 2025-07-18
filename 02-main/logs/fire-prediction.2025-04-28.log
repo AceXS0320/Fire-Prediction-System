@@ -1,0 +1,190 @@
+2025-04-28 20:14:20.951 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Starting Fire Prediction Application
+2025-04-28 20:14:20.962 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application name: Fire Prediction System
+2025-04-28 20:14:20.965 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Simulation mode: ENABLED
+2025-04-28 20:14:20.967 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing database
+2025-04-28 20:14:20.978 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - SupabaseDatabase initialized with URL: https://osrlvvrncgxutuphvyom.supabase.co
+2025-04-28 20:14:20.979 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Initializing Supabase database connection
+2025-04-28 20:14:23.319 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Successfully connected to Supabase
+2025-04-28 20:14:23.324 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing sensor manager
+2025-04-28 20:14:23.335 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Initializing SensorManager
+2025-04-28 20:14:23.335 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Setting read interval to 60 seconds
+2025-04-28 20:14:23.335 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Adding simulated sensors
+2025-04-28 20:14:23.337 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: SIM1(Living Room)
+2025-04-28 20:14:23.337 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: SIM2(Kitchen)
+2025-04-28 20:14:23.337 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: SIM3(Bedroom)
+2025-04-28 20:14:23.337 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Initializing 3 sensors
+2025-04-28 20:14:23.338 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: SIM1
+2025-04-28 20:14:23.338 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: SIM1
+2025-04-28 20:14:23.338 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 29.691889053774805°C, humidity: 63.62938327737112%
+2025-04-28 20:14:23.339 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: SIM2
+2025-04-28 20:14:23.340 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: SIM2
+2025-04-28 20:14:23.340 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 22.658006533126553°C, humidity: 77.07137283383216%
+2025-04-28 20:14:23.340 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: SIM3
+2025-04-28 20:14:23.340 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: SIM3
+2025-04-28 20:14:23.340 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 25.731491994798716°C, humidity: 77.46976072594563%
+2025-04-28 20:14:23.349 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing predictor
+2025-04-28 20:14:23.362 [JavaFX Application Thread] INFO  c.fireprediction.ml.PredictorFactory - Creating predictor of type: smile
+2025-04-28 20:14:23.375 [JavaFX Application Thread] INFO  c.fireprediction.ml.PredictorFactory - Initializing predictor
+2025-04-28 20:14:23.375 [JavaFX Application Thread] INFO  c.f.ml.SmileFireRiskPredictor - Initializing SmileFireRiskPredictor
+2025-04-28 20:14:24.670 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Starting scheduled sensor readings every 60 seconds
+2025-04-28 20:14:24.695 [pool-3-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-04-28 20:14:24.695 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=29.77910333944315°C, humidity=62.674153400360574%
+2025-04-28 20:14:24.702 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM1, Location=Living Room, Temp=29.8°C, Humidity=62.7%, Time=2025-04-28T20:14:24.697659500
+2025-04-28 20:14:24.702 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM1', temperature=29.77910333944315, humidity=62.674153400360574, location='Living Room', timestamp=2025-04-28T20:14:24.697659500, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:14:24.791 [ForkJoinPool.commonPool-worker-1] INFO  c.f.database.SupabaseDatabase - Loading ML model: Random Forest
+2025-04-28 20:14:24.792 [ForkJoinPool.commonPool-worker-1] WARN  c.f.FirePredictionApplication - Failed to load model, training new one: Error loading ML model: Illegal character in query at index 73: https://osrlvvrncgxutuphvyom.supabase.co/rest/v1/ml_models?name=eq.Random Forest&order=created_at.desc&limit=1
+2025-04-28 20:14:24.792 [ForkJoinPool.commonPool-worker-1] INFO  c.f.FirePredictionApplication - Training model with historical data
+2025-04-28 20:14:24.792 [ForkJoinPool.commonPool-worker-1] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:14:24.937 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:14:25.429 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:14:25.431 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=22.61593274878033°C, humidity=77.54228604234297%
+2025-04-28 20:14:25.431 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM2, Location=Kitchen, Temp=22.6°C, Humidity=77.5%, Time=2025-04-28T20:14:25.431250500
+2025-04-28 20:14:25.432 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM2', temperature=22.61593274878033, humidity=77.54228604234297, location='Kitchen', timestamp=2025-04-28T20:14:25.431250500, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:14:25.502 [ForkJoinPool.commonPool-worker-1] INFO  c.f.FirePredictionApplication - Training with 109 readings
+2025-04-28 20:14:25.503 [ForkJoinPool.commonPool-worker-1] INFO  c.f.ml.SmileFireRiskPredictor - Training SmileFireRiskPredictor with 109 readings
+2025-04-28 20:14:25.533 [ForkJoinPool.commonPool-worker-1] INFO  c.f.ml.SmileFireRiskPredictor - Training RandomForest model
+2025-04-28 20:14:25.558 [ForkJoinPool.commonPool-worker-1] ERROR c.f.FirePredictionApplication - Failed to train model: Failed to train model: null
+com.fireprediction.ml.PredictorException: Failed to train model: null
+	at com.fireprediction.ml.SmileFireRiskPredictor.trainModel(SmileFireRiskPredictor.java:121)
+	at com.fireprediction.FirePredictionApplication.trainModel(FirePredictionApplication.java:667)
+	at com.fireprediction.FirePredictionApplication.lambda$0(FirePredictionApplication.java:163)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: java.lang.UnsupportedOperationException: null
+	at smile.data.vector.BaseVector.toIntArray(BaseVector.java:90)
+	at smile.data.vector.BaseVector.toIntArray(BaseVector.java:82)
+	at smile.classification.ClassLabels.fit(ClassLabels.java:106)
+	at smile.classification.RandomForest.fit(RandomForest.java:300)
+	at smile.classification.RandomForest.fit(RandomForest.java:197)
+	at com.fireprediction.ml.SmileFireRiskPredictor.trainModel(SmileFireRiskPredictor.java:76)
+	... 9 common frames omitted
+2025-04-28 20:14:25.926 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:14:25.927 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=25.79702725624797°C, humidity=77.3745875602253%
+2025-04-28 20:14:25.928 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM3, Location=Bedroom, Temp=25.8°C, Humidity=77.4%, Time=2025-04-28T20:14:25.927192900
+2025-04-28 20:14:25.928 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM3', temperature=25.79702725624797, humidity=77.3745875602253, location='Bedroom', timestamp=2025-04-28T20:14:25.927192900, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:14:26.514 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:14:29.681 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:14:34.673 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:14:39.673 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:14:44.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:14:49.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:14:54.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:14:59.673 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:04.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:09.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:14.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:19.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:24.672 [pool-3-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-04-28 20:15:24.673 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=29.700512128662055°C, humidity=61.654133621563346%
+2025-04-28 20:15:24.673 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM1, Location=Living Room, Temp=29.7°C, Humidity=61.7%, Time=2025-04-28T20:15:24.673906800
+2025-04-28 20:15:24.673 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM1', temperature=29.700512128662055, humidity=61.654133621563346, location='Living Room', timestamp=2025-04-28T20:15:24.673906800, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:15:24.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:24.924 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:15:24.925 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=22.68752620214126°C, humidity=78.08453153092809%
+2025-04-28 20:15:24.925 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM2, Location=Kitchen, Temp=22.7°C, Humidity=78.1%, Time=2025-04-28T20:15:24.925511400
+2025-04-28 20:15:24.925 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM2', temperature=22.68752620214126, humidity=78.08453153092809, location='Kitchen', timestamp=2025-04-28T20:15:24.925511400, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:15:25.254 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:15:25.255 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=25.68225041937107°C, humidity=77.18188682245965%
+2025-04-28 20:15:25.256 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM3, Location=Bedroom, Temp=25.7°C, Humidity=77.2%, Time=2025-04-28T20:15:25.256904300
+2025-04-28 20:15:25.256 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM3', temperature=25.68225041937107, humidity=77.18188682245965, location='Bedroom', timestamp=2025-04-28T20:15:25.256904300, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:15:25.472 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:15:29.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:34.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:39.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:44.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:49.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:54.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:15:59.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:04.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:09.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:14.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:19.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:24.674 [pool-3-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-04-28 20:16:24.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:24.674 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=29.666994602231355°C, humidity=60.73908954863883%
+2025-04-28 20:16:24.674 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM1, Location=Living Room, Temp=29.7°C, Humidity=60.7%, Time=2025-04-28T20:16:24.674207500
+2025-04-28 20:16:24.675 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM1', temperature=29.666994602231355, humidity=60.73908954863883, location='Living Room', timestamp=2025-04-28T20:16:24.674207500, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:16:25.013 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:16:25.014 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=22.582463748721235°C, humidity=78.48478198633876%
+2025-04-28 20:16:25.015 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM2, Location=Kitchen, Temp=22.6°C, Humidity=78.5%, Time=2025-04-28T20:16:25.014729100
+2025-04-28 20:16:25.015 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM2', temperature=22.582463748721235, humidity=78.48478198633876, location='Kitchen', timestamp=2025-04-28T20:16:25.014729100, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:16:25.207 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:16:25.210 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=25.76547159282743°C, humidity=77.12287562272242%
+2025-04-28 20:16:25.211 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM3, Location=Bedroom, Temp=25.8°C, Humidity=77.1%, Time=2025-04-28T20:16:25.211326200
+2025-04-28 20:16:25.212 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM3', temperature=25.76547159282743, humidity=77.12287562272242, location='Bedroom', timestamp=2025-04-28T20:16:25.211326200, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:16:25.786 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:16:29.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:34.703 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:39.673 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:44.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:49.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:54.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:16:59.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:04.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:09.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:14.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:19.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:24.672 [pool-3-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-04-28 20:17:24.672 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=29.80638185167646°C, humidity=59.7908695967961%
+2025-04-28 20:17:24.672 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM1, Location=Living Room, Temp=29.8°C, Humidity=59.8%, Time=2025-04-28T20:17:24.672624700
+2025-04-28 20:17:24.672 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM1', temperature=29.80638185167646, humidity=59.7908695967961, location='Living Room', timestamp=2025-04-28T20:17:24.672624700, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:17:24.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:24.874 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:17:24.875 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=22.72556411922446°C, humidity=79.02484697466062%
+2025-04-28 20:17:24.876 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM2, Location=Kitchen, Temp=22.7°C, Humidity=79.0%, Time=2025-04-28T20:17:24.876152700
+2025-04-28 20:17:24.876 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM2', temperature=22.72556411922446, humidity=79.02484697466062, location='Kitchen', timestamp=2025-04-28T20:17:24.876152700, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:17:25.208 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:17:25.209 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=25.681076465626735°C, humidity=76.90409507937687%
+2025-04-28 20:17:25.209 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM3, Location=Bedroom, Temp=25.7°C, Humidity=76.9%, Time=2025-04-28T20:17:25.209405500
+2025-04-28 20:17:25.209 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM3', temperature=25.681076465626735, humidity=76.90409507937687, location='Bedroom', timestamp=2025-04-28T20:17:25.209405500, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:17:25.492 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:17:29.673 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:34.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:39.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:44.673 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:49.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:54.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:17:59.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:04.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:09.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:14.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:19.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:24.673 [pool-3-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-04-28 20:18:24.673 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:24.674 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=29.695969525692437°C, humidity=58.90050838861032%
+2025-04-28 20:18:24.674 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM1, Location=Living Room, Temp=29.7°C, Humidity=58.9%, Time=2025-04-28T20:18:24.674784200
+2025-04-28 20:18:24.674 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM1', temperature=29.695969525692437, humidity=58.90050838861032, location='Living Room', timestamp=2025-04-28T20:18:24.674784200, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:18:25.186 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:18:25.187 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=22.74531784427422°C, humidity=79.42597875305948%
+2025-04-28 20:18:25.188 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM2, Location=Kitchen, Temp=22.7°C, Humidity=79.4%, Time=2025-04-28T20:18:25.188961400
+2025-04-28 20:18:25.188 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM2', temperature=22.74531784427422, humidity=79.42597875305948, location='Kitchen', timestamp=2025-04-28T20:18:25.188961400, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:18:25.367 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:18:25.369 [pool-3-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=25.73186017273953°C, humidity=76.79786066335441%
+2025-04-28 20:18:25.371 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM3, Location=Bedroom, Temp=25.7°C, Humidity=76.8%, Time=2025-04-28T20:18:25.370854100
+2025-04-28 20:18:25.371 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM3', temperature=25.73186017273953, humidity=76.79786066335441, location='Bedroom', timestamp=2025-04-28T20:18:25.370854100, riskLevel=null, riskProbability=0.0}
+2025-04-28 20:18:25.706 [pool-3-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-04-28 20:18:29.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:34.673 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:39.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:44.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:49.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:54.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:18:59.673 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:19:04.673 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:19:09.675 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:19:14.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:19:19.674 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-04-28 20:19:22.533 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Stopping Fire Prediction Application
+2025-04-28 20:19:22.537 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Closing SensorManager
+2025-04-28 20:19:22.538 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Stopping scheduled sensor readings
+2025-04-28 20:19:22.538 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Closing all sensors
+2025-04-28 20:19:22.539 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: SIM1
+2025-04-28 20:19:22.540 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: SIM2
+2025-04-28 20:19:22.541 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: SIM3
+2025-04-28 20:19:22.542 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Closing Supabase database connection
+2025-04-28 20:19:22.550 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application stopped

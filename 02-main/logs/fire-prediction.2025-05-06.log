@@ -1,0 +1,618 @@
+2025-05-04 16:43:06.774 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.demo.EmailNotificationDemo - Starting Email Notification Demo
+2025-05-04 16:43:06.871 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.n.FireRiskNotificationHandler - Fire Risk Notification Handler initialized
+2025-05-04 16:43:06.882 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Initializing SensorManager
+2025-05-04 16:43:06.884 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Setting read interval to 10 seconds
+2025-05-04 16:43:06.902 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Adding sensor: high-risk-sensor(Server Room A)
+2025-05-04 16:43:06.903 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Adding sensor: extreme-risk-sensor(Server Room B)
+2025-05-04 16:43:06.904 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Initializing 2 sensors
+2025-05-04 16:43:06.905 [com.fireprediction.demo.EmailNotificationDemo.main()] DEBUG c.f.sensor.SensorManager - Initializing sensor: high-risk-sensor
+2025-05-04 16:43:06.906 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: high-risk-sensor
+2025-05-04 16:43:06.908 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 25.340123505041348°C, humidity: 67.94169800810495%
+2025-05-04 16:43:06.910 [com.fireprediction.demo.EmailNotificationDemo.main()] DEBUG c.f.sensor.SensorManager - Initializing sensor: extreme-risk-sensor
+2025-05-04 16:43:06.910 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: extreme-risk-sensor
+2025-05-04 16:43:06.917 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 26.830358018309308°C, humidity: 77.38260713477209%
+2025-05-04 16:43:06.995 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.demo.EmailNotificationDemo - Starting scheduled sensor readings. Check your inbox for alerts!
+2025-05-04 16:43:06.998 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.demo.EmailNotificationDemo - Press Ctrl+C to exit the demo
+2025-05-04 16:43:07.000 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Starting scheduled sensor readings every 10 seconds
+2025-05-04 16:43:07.007 [pool-3-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:43:07.013 [pool-3-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating HIGH risk temperature: 45.6°C
+2025-05-04 16:43:07.015 [pool-3-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=45.6°C, humidity=26.2%
+2025-05-04 16:43:07.022 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=high-risk-sensor, Location=Server Room A, Temp=45.6°C, Humidity=26.2%, Time=2025-05-04T16:43:07.019168200
+2025-05-04 16:43:07.069 [pool-3-thread-1] WARN  c.f.n.FireRiskNotificationHandler - ALERT: High fire risk fire risk detected from sensor high-risk-sensor! Temperature: 45.6°C, Humidity: 26.2%
+2025-05-04 16:43:07.070 [pool-3-thread-1] INFO  c.f.notification.EmailService - Preparing to send fire risk notification email for risk level: High fire risk
+2025-05-04 16:43:09.827 [pool-3-thread-1] ERROR c.f.notification.EmailService - Failed to send email notification: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d2e1a72fcca58-7405905d067sm4849547b3a.126 - gsmtp
+
+javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d2e1a72fcca58-7405905d067sm4849547b3a.126 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:965)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:876)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:780)
+	at javax.mail.Service.connect(Service.java:388)
+	at javax.mail.Service.connect(Service.java:246)
+	at javax.mail.Service.connect(Service.java:195)
+	at javax.mail.Transport.send0(Transport.java:254)
+	at javax.mail.Transport.send(Transport.java:124)
+	at com.fireprediction.notification.EmailService.sendFireRiskNotification(EmailService.java:82)
+	at com.fireprediction.notification.FireRiskNotificationHandler.accept(FireRiskNotificationHandler.java:50)
+	at com.fireprediction.notification.FireRiskNotificationHandler.accept(FireRiskNotificationHandler.java:14)
+	at com.fireprediction.sensor.SensorManager.readAllSensors(SensorManager.java:130)
+	at com.fireprediction.sensor.SensorManager.lambda$startScheduledReadings$0(SensorManager.java:179)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-05-04 16:43:09.828 [pool-3-thread-1] ERROR c.f.n.FireRiskNotificationHandler - Failed to send email notification for High fire risk fire risk
+2025-05-04 16:43:09.834 [pool-3-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating EXTREME risk temperature: 51.2°C
+2025-05-04 16:43:09.834 [pool-3-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=51.2°C, humidity=28.9%
+2025-05-04 16:43:09.835 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=extreme-risk-sensor, Location=Server Room B, Temp=51.2°C, Humidity=28.9%, Time=2025-05-04T16:43:09.835286300
+2025-05-04 16:43:09.836 [pool-3-thread-1] WARN  c.f.n.FireRiskNotificationHandler - ALERT: Extreme fire risk fire risk detected from sensor extreme-risk-sensor! Temperature: 51.2°C, Humidity: 28.9%
+2025-05-04 16:43:09.836 [pool-3-thread-1] INFO  c.f.notification.EmailService - Preparing to send fire risk notification email for risk level: Extreme fire risk
+2025-05-04 16:43:13.526 [pool-3-thread-1] ERROR c.f.notification.EmailService - Failed to send email notification: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 41be03b00d2f7-b1fb3b7cfefsm3755292a12.36 - gsmtp
+
+javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor 41be03b00d2f7-b1fb3b7cfefsm3755292a12.36 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:965)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:876)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:780)
+	at javax.mail.Service.connect(Service.java:388)
+	at javax.mail.Service.connect(Service.java:246)
+	at javax.mail.Service.connect(Service.java:195)
+	at javax.mail.Transport.send0(Transport.java:254)
+	at javax.mail.Transport.send(Transport.java:124)
+	at com.fireprediction.notification.EmailService.sendFireRiskNotification(EmailService.java:82)
+	at com.fireprediction.notification.FireRiskNotificationHandler.accept(FireRiskNotificationHandler.java:50)
+	at com.fireprediction.notification.FireRiskNotificationHandler.accept(FireRiskNotificationHandler.java:14)
+	at com.fireprediction.sensor.SensorManager.readAllSensors(SensorManager.java:130)
+	at com.fireprediction.sensor.SensorManager.lambda$startScheduledReadings$0(SensorManager.java:179)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-05-04 16:43:13.528 [pool-3-thread-1] ERROR c.f.n.FireRiskNotificationHandler - Failed to send email notification for Extreme fire risk fire risk
+2025-05-04 16:43:17.016 [pool-3-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:43:17.016 [pool-3-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating HIGH risk temperature: 48.2°C
+2025-05-04 16:43:17.018 [pool-3-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=48.2°C, humidity=29.8%
+2025-05-04 16:43:17.020 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=high-risk-sensor, Location=Server Room A, Temp=48.2°C, Humidity=29.8%, Time=2025-05-04T16:43:17.020590900
+2025-05-04 16:43:17.020 [pool-3-thread-1] WARN  c.f.n.FireRiskNotificationHandler - ALERT: High fire risk fire risk detected from sensor high-risk-sensor! Temperature: 48.2°C, Humidity: 29.8%
+2025-05-04 16:43:17.021 [pool-3-thread-1] INFO  c.f.notification.EmailService - Preparing to send fire risk notification email for risk level: High fire risk
+2025-05-04 16:43:20.270 [pool-3-thread-1] ERROR c.f.notification.EmailService - Failed to send email notification: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d2e1a72fcca58-7405905fce9sm4867511b3a.128 - gsmtp
+
+javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d2e1a72fcca58-7405905fce9sm4867511b3a.128 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:965)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:876)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:780)
+	at javax.mail.Service.connect(Service.java:388)
+	at javax.mail.Service.connect(Service.java:246)
+	at javax.mail.Service.connect(Service.java:195)
+	at javax.mail.Transport.send0(Transport.java:254)
+	at javax.mail.Transport.send(Transport.java:124)
+	at com.fireprediction.notification.EmailService.sendFireRiskNotification(EmailService.java:82)
+	at com.fireprediction.notification.FireRiskNotificationHandler.accept(FireRiskNotificationHandler.java:50)
+	at com.fireprediction.notification.FireRiskNotificationHandler.accept(FireRiskNotificationHandler.java:14)
+	at com.fireprediction.sensor.SensorManager.readAllSensors(SensorManager.java:130)
+	at com.fireprediction.sensor.SensorManager.lambda$startScheduledReadings$0(SensorManager.java:179)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-05-04 16:43:20.460 [pool-3-thread-1] ERROR c.f.n.FireRiskNotificationHandler - Failed to send email notification for High fire risk fire risk
+2025-05-04 16:43:20.465 [pool-3-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating EXTREME risk temperature: 57.9°C
+2025-05-04 16:43:20.465 [pool-3-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=57.9°C, humidity=22.7%
+2025-05-04 16:43:20.466 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=extreme-risk-sensor, Location=Server Room B, Temp=57.9°C, Humidity=22.7%, Time=2025-05-04T16:43:20.466204400
+2025-05-04 16:43:20.468 [pool-3-thread-1] WARN  c.f.n.FireRiskNotificationHandler - ALERT: Extreme fire risk fire risk detected from sensor extreme-risk-sensor! Temperature: 57.9°C, Humidity: 22.7%
+2025-05-04 16:43:20.468 [pool-3-thread-1] INFO  c.f.notification.EmailService - Preparing to send fire risk notification email for risk level: Extreme fire risk
+2025-05-04 16:43:24.142 [pool-3-thread-1] ERROR c.f.notification.EmailService - Failed to send email notification: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d9443c01a7336-22e150ead69sm37874505ad.24 - gsmtp
+
+javax.mail.AuthenticationFailedException: 534-5.7.9 Application-specific password required. For more information, go to
+534 5.7.9  https://support.google.com/mail/?p=InvalidSecondFactor d9443c01a7336-22e150ead69sm37874505ad.24 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:965)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:876)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:780)
+	at javax.mail.Service.connect(Service.java:388)
+	at javax.mail.Service.connect(Service.java:246)
+	at javax.mail.Service.connect(Service.java:195)
+	at javax.mail.Transport.send0(Transport.java:254)
+	at javax.mail.Transport.send(Transport.java:124)
+	at com.fireprediction.notification.EmailService.sendFireRiskNotification(EmailService.java:82)
+	at com.fireprediction.notification.FireRiskNotificationHandler.accept(FireRiskNotificationHandler.java:50)
+	at com.fireprediction.notification.FireRiskNotificationHandler.accept(FireRiskNotificationHandler.java:14)
+	at com.fireprediction.sensor.SensorManager.readAllSensors(SensorManager.java:130)
+	at com.fireprediction.sensor.SensorManager.lambda$startScheduledReadings$0(SensorManager.java:179)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-05-04 16:43:24.144 [pool-3-thread-1] ERROR c.f.n.FireRiskNotificationHandler - Failed to send email notification for Extreme fire risk fire risk
+2025-05-04 16:43:27.008 [pool-3-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:43:27.008 [pool-3-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating HIGH risk temperature: 47.1°C
+2025-05-04 16:43:27.009 [pool-3-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=47.1°C, humidity=10.5%
+2025-05-04 16:43:27.011 [pool-3-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=high-risk-sensor, Location=Server Room A, Temp=47.1°C, Humidity=10.5%, Time=2025-05-04T16:43:27.011379200
+2025-05-04 16:43:27.012 [pool-3-thread-1] WARN  c.f.n.FireRiskNotificationHandler - ALERT: High fire risk fire risk detected from sensor high-risk-sensor! Temperature: 47.1°C, Humidity: 10.5%
+2025-05-04 16:43:27.012 [pool-3-thread-1] INFO  c.f.notification.EmailService - Preparing to send fire risk notification email for risk level: High fire risk
+2025-05-04 16:46:21.653 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.demo.EmailNotificationDemo - Starting Email Notification Demo
+2025-05-04 16:46:21.664 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.n.FireRiskNotificationHandler - Fire Risk Notification Handler initialized
+2025-05-04 16:46:21.669 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Initializing SensorManager
+2025-05-04 16:46:21.670 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Setting read interval to 10 seconds
+2025-05-04 16:46:21.674 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Adding sensor: high-risk-sensor(Server Room A)
+2025-05-04 16:46:21.674 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Adding sensor: extreme-risk-sensor(Server Room B)
+2025-05-04 16:46:21.675 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Initializing 2 sensors
+2025-05-04 16:46:21.677 [com.fireprediction.demo.EmailNotificationDemo.main()] DEBUG c.f.sensor.SensorManager - Initializing sensor: high-risk-sensor
+2025-05-04 16:46:21.678 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: high-risk-sensor
+2025-05-04 16:46:21.679 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 21.60825664726266°C, humidity: 50.53434843731837%
+2025-05-04 16:46:21.680 [com.fireprediction.demo.EmailNotificationDemo.main()] DEBUG c.f.sensor.SensorManager - Initializing sensor: extreme-risk-sensor
+2025-05-04 16:46:21.681 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: extreme-risk-sensor
+2025-05-04 16:46:21.682 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 23.00748517449605°C, humidity: 62.32389952903841%
+2025-05-04 16:46:21.682 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.demo.EmailNotificationDemo - Starting scheduled sensor readings. Check your inbox for alerts!
+2025-05-04 16:46:21.683 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.demo.EmailNotificationDemo - Press Ctrl+C to exit the demo
+2025-05-04 16:46:21.684 [com.fireprediction.demo.EmailNotificationDemo.main()] INFO  c.f.sensor.SensorManager - Starting scheduled sensor readings every 10 seconds
+2025-05-04 16:46:21.693 [pool-1-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:46:21.695 [pool-1-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating HIGH risk temperature: 47.1°C
+2025-05-04 16:46:21.696 [pool-1-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=47.1°C, humidity=15.8%
+2025-05-04 16:46:21.701 [pool-1-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=high-risk-sensor, Location=Server Room A, Temp=47.1°C, Humidity=15.8%, Time=2025-05-04T16:46:21.698748600
+2025-05-04 16:46:21.730 [pool-1-thread-1] WARN  c.f.n.FireRiskNotificationHandler - ALERT: High fire risk fire risk detected from sensor high-risk-sensor! Temperature: 47.1°C, Humidity: 15.8%
+2025-05-04 16:46:21.731 [pool-1-thread-1] INFO  c.f.notification.EmailService - Preparing to send fire risk notification email for risk level: High fire risk
+2025-05-04 16:46:26.784 [pool-1-thread-1] INFO  c.f.notification.EmailService - Successfully sent fire risk notification email to briancondon894@gmail.com
+2025-05-04 16:46:26.787 [pool-1-thread-1] INFO  c.f.n.FireRiskNotificationHandler - Email notification sent for High fire risk fire risk
+2025-05-04 16:46:26.791 [pool-1-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating EXTREME risk temperature: 59.7°C
+2025-05-04 16:46:26.792 [pool-1-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=59.7°C, humidity=18.3%
+2025-05-04 16:46:26.793 [pool-1-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=extreme-risk-sensor, Location=Server Room B, Temp=59.7°C, Humidity=18.3%, Time=2025-05-04T16:46:26.793022700
+2025-05-04 16:46:26.797 [pool-1-thread-1] INFO  c.f.n.FireRiskNotificationHandler - High risk detected but notification in cooldown period. Skipping email.
+2025-05-04 16:46:31.696 [pool-1-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:46:31.696 [pool-1-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating HIGH risk temperature: 46.6°C
+2025-05-04 16:46:31.699 [pool-1-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=46.6°C, humidity=11.5%
+2025-05-04 16:46:31.702 [pool-1-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=high-risk-sensor, Location=Server Room A, Temp=46.6°C, Humidity=11.5%, Time=2025-05-04T16:46:31.702335600
+2025-05-04 16:46:31.704 [pool-1-thread-1] INFO  c.f.n.FireRiskNotificationHandler - High risk detected but notification in cooldown period. Skipping email.
+2025-05-04 16:46:31.706 [pool-1-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating EXTREME risk temperature: 57.6°C
+2025-05-04 16:46:31.709 [pool-1-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=57.6°C, humidity=22.2%
+2025-05-04 16:46:31.712 [pool-1-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=extreme-risk-sensor, Location=Server Room B, Temp=57.6°C, Humidity=22.2%, Time=2025-05-04T16:46:31.711336800
+2025-05-04 16:46:31.716 [pool-1-thread-1] INFO  c.f.n.FireRiskNotificationHandler - High risk detected but notification in cooldown period. Skipping email.
+2025-05-04 16:46:41.692 [pool-1-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:46:41.692 [pool-1-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating HIGH risk temperature: 44.8°C
+2025-05-04 16:46:41.694 [pool-1-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=44.8°C, humidity=19.4%
+2025-05-04 16:46:41.697 [pool-1-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=high-risk-sensor, Location=Server Room A, Temp=44.8°C, Humidity=19.4%, Time=2025-05-04T16:46:41.697458900
+2025-05-04 16:46:41.697 [pool-1-thread-1] INFO  c.f.n.FireRiskNotificationHandler - High risk detected but notification in cooldown period. Skipping email.
+2025-05-04 16:46:41.698 [pool-1-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating EXTREME risk temperature: 57.9°C
+2025-05-04 16:46:41.699 [pool-1-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=57.9°C, humidity=19.6%
+2025-05-04 16:46:41.700 [pool-1-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=extreme-risk-sensor, Location=Server Room B, Temp=57.9°C, Humidity=19.6%, Time=2025-05-04T16:46:41.700457400
+2025-05-04 16:46:41.701 [pool-1-thread-1] INFO  c.f.n.FireRiskNotificationHandler - High risk detected but notification in cooldown period. Skipping email.
+2025-05-04 16:46:51.694 [pool-1-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:46:51.694 [pool-1-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating HIGH risk temperature: 41.6°C
+2025-05-04 16:46:51.696 [pool-1-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=41.6°C, humidity=12.5%
+2025-05-04 16:46:51.701 [pool-1-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=high-risk-sensor, Location=Server Room A, Temp=41.6°C, Humidity=12.5%, Time=2025-05-04T16:46:51.700965300
+2025-05-04 16:46:51.703 [pool-1-thread-1] INFO  c.f.n.FireRiskNotificationHandler - High risk detected but notification in cooldown period. Skipping email.
+2025-05-04 16:46:51.704 [pool-1-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating EXTREME risk temperature: 58.8°C
+2025-05-04 16:46:51.705 [pool-1-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=58.8°C, humidity=11.0%
+2025-05-04 16:46:51.706 [pool-1-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=extreme-risk-sensor, Location=Server Room B, Temp=58.8°C, Humidity=11.0%, Time=2025-05-04T16:46:51.706967500
+2025-05-04 16:46:51.708 [pool-1-thread-1] INFO  c.f.n.FireRiskNotificationHandler - High risk detected but notification in cooldown period. Skipping email.
+2025-05-04 16:47:01.700 [pool-1-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:47:01.700 [pool-1-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating HIGH risk temperature: 45.3°C
+2025-05-04 16:47:01.701 [pool-1-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=45.3°C, humidity=18.9%
+2025-05-04 16:47:01.704 [pool-1-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=high-risk-sensor, Location=Server Room A, Temp=45.3°C, Humidity=18.9%, Time=2025-05-04T16:47:01.703442700
+2025-05-04 16:47:01.704 [pool-1-thread-1] INFO  c.f.n.FireRiskNotificationHandler - High risk detected but notification in cooldown period. Skipping email.
+2025-05-04 16:47:01.705 [pool-1-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating EXTREME risk temperature: 55.5°C
+2025-05-04 16:47:01.705 [pool-1-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=55.5°C, humidity=23.5%
+2025-05-04 16:47:01.706 [pool-1-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=extreme-risk-sensor, Location=Server Room B, Temp=55.5°C, Humidity=23.5%, Time=2025-05-04T16:47:01.706422800
+2025-05-04 16:47:01.706 [pool-1-thread-1] INFO  c.f.n.FireRiskNotificationHandler - High risk detected but notification in cooldown period. Skipping email.
+2025-05-04 16:52:13.766 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Starting Fire Prediction Application
+2025-05-04 16:52:13.827 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application name: Fire Prediction System
+2025-05-04 16:52:13.830 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Simulation mode: ENABLED
+2025-05-04 16:52:13.831 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing database
+2025-05-04 16:52:13.872 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - SupabaseDatabase initialized with URL: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true
+2025-05-04 16:52:13.872 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Initializing Supabase database connection
+2025-05-04 16:52:14.406 [JavaFX Application Thread] ERROR c.f.FirePredictionApplication - Failed to start application: Error initializing Supabase connection: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+com.fireprediction.database.DatabaseException: Error initializing Supabase connection: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+	at com.fireprediction.database.SupabaseDatabase.initialize(SupabaseDatabase.java:112)
+	at com.fireprediction.FirePredictionApplication.initializeComponents(FirePredictionApplication.java:605)
+	at com.fireprediction.FirePredictionApplication.start(FirePredictionApplication.java:109)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.IllegalArgumentException: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+	at java.base/java.net.URI.create(URI.java:932)
+	at org.apache.http.client.methods.HttpGet.<init>(HttpGet.java:66)
+	at com.fireprediction.database.SupabaseDatabase.initialize(SupabaseDatabase.java:95)
+	... 11 common frames omitted
+Caused by: java.net.URISyntaxException: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+	at java.base/java.net.URI$Parser.fail(URI.java:2995)
+	at java.base/java.net.URI$Parser.parseAuthority(URI.java:3344)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3240)
+	at java.base/java.net.URI$Parser.parse(URI.java:3196)
+	at java.base/java.net.URI.<init>(URI.java:645)
+	at java.base/java.net.URI.create(URI.java:930)
+	... 13 common frames omitted
+2025-05-04 16:52:14.407 [JavaFX Application Thread] ERROR c.f.FirePredictionApplication - Failed to start application: Error initializing Supabase connection: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+2025-05-04 16:52:26.502 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Stopping Fire Prediction Application
+2025-05-04 16:52:26.505 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Closing Supabase database connection
+2025-05-04 16:52:26.512 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application stopped
+2025-05-04 16:53:07.656 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Starting Fire Prediction Application
+2025-05-04 16:53:07.661 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application name: Fire Prediction System
+2025-05-04 16:53:07.665 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Simulation mode: ENABLED
+2025-05-04 16:53:07.666 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing database
+2025-05-04 16:53:07.677 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - SupabaseDatabase initialized with URL: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true
+2025-05-04 16:53:07.680 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Initializing Supabase database connection
+2025-05-04 16:53:08.440 [JavaFX Application Thread] ERROR c.f.FirePredictionApplication - Failed to start application: Error initializing Supabase connection: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+com.fireprediction.database.DatabaseException: Error initializing Supabase connection: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+	at com.fireprediction.database.SupabaseDatabase.initialize(SupabaseDatabase.java:112)
+	at com.fireprediction.FirePredictionApplication.initializeComponents(FirePredictionApplication.java:605)
+	at com.fireprediction.FirePredictionApplication.start(FirePredictionApplication.java:109)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.IllegalArgumentException: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+	at java.base/java.net.URI.create(URI.java:932)
+	at org.apache.http.client.methods.HttpGet.<init>(HttpGet.java:66)
+	at com.fireprediction.database.SupabaseDatabase.initialize(SupabaseDatabase.java:95)
+	... 11 common frames omitted
+Caused by: java.net.URISyntaxException: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+	at java.base/java.net.URI$Parser.fail(URI.java:2995)
+	at java.base/java.net.URI$Parser.parseAuthority(URI.java:3344)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3240)
+	at java.base/java.net.URI$Parser.parse(URI.java:3196)
+	at java.base/java.net.URI.<init>(URI.java:645)
+	at java.base/java.net.URI.create(URI.java:930)
+	... 13 common frames omitted
+2025-05-04 16:53:08.441 [JavaFX Application Thread] ERROR c.f.FirePredictionApplication - Failed to start application: Error initializing Supabase connection: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+2025-05-04 16:53:12.841 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Stopping Fire Prediction Application
+2025-05-04 16:53:12.841 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Closing Supabase database connection
+2025-05-04 16:53:12.843 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application stopped
+2025-05-04 16:53:57.343 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Starting Fire Prediction Application
+2025-05-04 16:53:57.346 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application name: Fire Prediction System
+2025-05-04 16:53:57.349 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Simulation mode: ENABLED
+2025-05-04 16:53:57.350 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing database
+2025-05-04 16:53:57.353 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - SupabaseDatabase initialized with URL: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true
+2025-05-04 16:53:57.354 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Initializing Supabase database connection
+2025-05-04 16:53:57.963 [JavaFX Application Thread] ERROR c.f.FirePredictionApplication - Failed to start application: Error initializing Supabase connection: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+com.fireprediction.database.DatabaseException: Error initializing Supabase connection: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+	at com.fireprediction.database.SupabaseDatabase.initialize(SupabaseDatabase.java:112)
+	at com.fireprediction.FirePredictionApplication.initializeComponents(FirePredictionApplication.java:605)
+	at com.fireprediction.FirePredictionApplication.start(FirePredictionApplication.java:109)
+	at javafx.graphics/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456)
+	at javafx.graphics/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:96)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.lang.IllegalArgumentException: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+	at java.base/java.net.URI.create(URI.java:932)
+	at org.apache.http.client.methods.HttpGet.<init>(HttpGet.java:66)
+	at com.fireprediction.database.SupabaseDatabase.initialize(SupabaseDatabase.java:95)
+	... 11 common frames omitted
+Caused by: java.net.URISyntaxException: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+	at java.base/java.net.URI$Parser.fail(URI.java:2995)
+	at java.base/java.net.URI$Parser.parseAuthority(URI.java:3344)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3240)
+	at java.base/java.net.URI$Parser.parse(URI.java:3196)
+	at java.base/java.net.URI.<init>(URI.java:645)
+	at java.base/java.net.URI.create(URI.java:930)
+	... 13 common frames omitted
+2025-05-04 16:53:57.964 [JavaFX Application Thread] ERROR c.f.FirePredictionApplication - Failed to start application: Error initializing Supabase connection: Illegal character in authority at index 43: https://osrlvvrncgxutuphvyom.supabase.coset SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zcmx2dnJuY2d4dXR1cGh2eW9tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1MjIwMTIsImV4cCI6MjA1ODA5ODAxMn0.RlhInajoY7Ta2SEFc3TMr5Y8moU3VSPCcA3yoCSvazgset DEFAULT_PREDICTOR=SMILEset SIMULATION_MODE_ENABLED=true/rest/v1/sensor_readings?limit=1
+2025-05-04 16:54:05.208 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Stopping Fire Prediction Application
+2025-05-04 16:54:05.209 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Closing Supabase database connection
+2025-05-04 16:54:05.212 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application stopped
+2025-05-04 16:55:26.953 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Starting Fire Prediction Application
+2025-05-04 16:55:26.967 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application name: Fire Prediction System
+2025-05-04 16:55:26.970 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Simulation mode: ENABLED
+2025-05-04 16:55:26.970 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing database
+2025-05-04 16:55:26.976 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - SupabaseDatabase initialized with URL: https://osrlvvrncgxutuphvyom.supabase.co
+2025-05-04 16:55:26.976 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Initializing Supabase database connection
+2025-05-04 16:55:32.824 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Successfully connected to Supabase
+2025-05-04 16:55:32.835 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing sensor manager
+2025-05-04 16:55:32.839 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Initializing SensorManager
+2025-05-04 16:55:32.839 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Setting read interval to 60 seconds
+2025-05-04 16:55:32.839 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Adding simulated sensors
+2025-05-04 16:55:32.841 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: SIM1(Living Room)
+2025-05-04 16:55:32.841 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: SIM2(Kitchen)
+2025-05-04 16:55:32.841 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: SIM3(Bedroom)
+2025-05-04 16:55:32.841 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Initializing 3 sensors
+2025-05-04 16:55:32.841 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: SIM1
+2025-05-04 16:55:32.841 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: SIM1
+2025-05-04 16:55:32.842 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 21.093736983264222°C, humidity: 68.05482112913182%
+2025-05-04 16:55:32.842 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: SIM2
+2025-05-04 16:55:32.842 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: SIM2
+2025-05-04 16:55:32.842 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 27.81026531777202°C, humidity: 73.63371685017961%
+2025-05-04 16:55:32.843 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: SIM3
+2025-05-04 16:55:32.843 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: SIM3
+2025-05-04 16:55:32.843 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 23.398925880101725°C, humidity: 60.98162102381835%
+2025-05-04 16:55:32.843 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing email notification service
+2025-05-04 16:55:32.865 [JavaFX Application Thread] INFO  c.f.n.FireRiskNotificationHandler - Fire Risk Notification Handler initialized
+2025-05-04 16:55:32.865 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Email notification handler registered with sensor manager
+2025-05-04 16:55:32.868 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing predictor
+2025-05-04 16:55:32.873 [JavaFX Application Thread] INFO  c.fireprediction.ml.PredictorFactory - Creating predictor of type: smile
+2025-05-04 16:55:32.879 [JavaFX Application Thread] INFO  c.fireprediction.ml.PredictorFactory - Initializing predictor
+2025-05-04 16:55:32.879 [JavaFX Application Thread] INFO  c.f.ml.SmileFireRiskPredictor - Initializing SmileFireRiskPredictor
+2025-05-04 16:55:34.163 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Starting scheduled sensor readings every 60 seconds
+2025-05-04 16:55:34.179 [pool-2-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:55:34.180 [pool-2-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=21.041412530238137°C, humidity=68.86378944602313%
+2025-05-04 16:55:34.185 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM1, Location=Living Room, Temp=21.0°C, Humidity=68.9%, Time=2025-05-04T16:55:34.182700700
+2025-05-04 16:55:34.186 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM1', temperature=21.041412530238137, humidity=68.86378944602313, location='Living Room', timestamp=2025-05-04T16:55:34.182700700, riskLevel=null, riskProbability=0.0}
+2025-05-04 16:55:34.241 [ForkJoinPool.commonPool-worker-1] INFO  c.f.database.SupabaseDatabase - Loading ML model: Random Forest
+2025-05-04 16:55:34.244 [ForkJoinPool.commonPool-worker-1] WARN  c.f.FirePredictionApplication - Failed to load model, training new one: Error loading ML model: Illegal character in query at index 73: https://osrlvvrncgxutuphvyom.supabase.co/rest/v1/ml_models?name=eq.Random Forest&order=created_at.desc&limit=1
+2025-05-04 16:55:34.245 [ForkJoinPool.commonPool-worker-1] INFO  c.f.FirePredictionApplication - Training model with historical data
+2025-05-04 16:55:34.245 [ForkJoinPool.commonPool-worker-1] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:55:34.334 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:55:34.809 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 16:55:34.812 [pool-2-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=27.772718417559123°C, humidity=73.04897102046768%
+2025-05-04 16:55:34.853 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM2, Location=Kitchen, Temp=27.8°C, Humidity=73.0%, Time=2025-05-04T16:55:34.853711500
+2025-05-04 16:55:34.854 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM2', temperature=27.772718417559123, humidity=73.04897102046768, location='Kitchen', timestamp=2025-05-04T16:55:34.853711500, riskLevel=null, riskProbability=0.0}
+2025-05-04 16:55:35.239 [ForkJoinPool.commonPool-worker-1] INFO  c.f.FirePredictionApplication - Training with 739 readings
+2025-05-04 16:55:35.240 [ForkJoinPool.commonPool-worker-1] INFO  c.f.ml.SmileFireRiskPredictor - Training SmileFireRiskPredictor with 739 readings
+2025-05-04 16:55:35.275 [ForkJoinPool.commonPool-worker-1] INFO  c.f.ml.SmileFireRiskPredictor - Training RandomForest model
+2025-05-04 16:55:35.302 [ForkJoinPool.commonPool-worker-1] ERROR c.f.FirePredictionApplication - Failed to train model: Failed to train model: null
+com.fireprediction.ml.PredictorException: Failed to train model: null
+	at com.fireprediction.ml.SmileFireRiskPredictor.trainModel(SmileFireRiskPredictor.java:121)
+	at com.fireprediction.FirePredictionApplication.trainModel(FirePredictionApplication.java:686)
+	at com.fireprediction.FirePredictionApplication.lambda$start$0(FirePredictionApplication.java:167)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: java.lang.UnsupportedOperationException: null
+	at smile.data.vector.BaseVector.toIntArray(BaseVector.java:90)
+	at smile.data.vector.BaseVector.toIntArray(BaseVector.java:82)
+	at smile.classification.ClassLabels.fit(ClassLabels.java:106)
+	at smile.classification.RandomForest.fit(RandomForest.java:300)
+	at smile.classification.RandomForest.fit(RandomForest.java:197)
+	at com.fireprediction.ml.SmileFireRiskPredictor.trainModel(SmileFireRiskPredictor.java:76)
+	... 9 common frames omitted
+2025-05-04 16:55:35.559 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 16:55:35.561 [pool-2-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=23.45802919711389°C, humidity=61.23915540715124%
+2025-05-04 16:55:35.562 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM3, Location=Bedroom, Temp=23.5°C, Humidity=61.2%, Time=2025-05-04T16:55:35.562182300
+2025-05-04 16:55:35.563 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM3', temperature=23.45802919711389, humidity=61.23915540715124, location='Bedroom', timestamp=2025-05-04T16:55:35.562182300, riskLevel=null, riskProbability=0.0}
+2025-05-04 16:55:36.057 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 16:55:39.173 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:55:44.172 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:55:49.172 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:55:54.173 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:55:59.172 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:56:04.172 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:56:09.173 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:56:10.031 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Stopping Fire Prediction Application
+2025-05-04 16:56:10.039 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Closing SensorManager
+2025-05-04 16:56:10.040 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Stopping scheduled sensor readings
+2025-05-04 16:56:10.040 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Closing all sensors
+2025-05-04 16:56:10.041 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: SIM1
+2025-05-04 16:56:10.041 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: SIM2
+2025-05-04 16:56:10.041 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: SIM3
+2025-05-04 16:56:10.042 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Closing Supabase database connection
+2025-05-04 16:56:10.045 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application stopped
+2025-05-04 16:58:47.383 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Starting Fire Prediction Application
+2025-05-04 16:58:47.433 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application name: Fire Prediction System
+2025-05-04 16:58:47.443 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Simulation mode: ENABLED
+2025-05-04 16:58:47.443 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing database
+2025-05-04 16:58:47.453 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - SupabaseDatabase initialized with URL: https://osrlvvrncgxutuphvyom.supabase.co
+2025-05-04 16:58:47.453 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Initializing Supabase database connection
+2025-05-04 16:58:50.258 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Successfully connected to Supabase
+2025-05-04 16:58:50.263 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing sensor manager
+2025-05-04 16:58:50.303 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Initializing SensorManager
+2025-05-04 16:58:50.304 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Setting read interval to 60 seconds
+2025-05-04 16:58:50.304 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Adding simulated sensors
+2025-05-04 16:58:50.305 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: SIM1(Living Room)
+2025-05-04 16:58:50.306 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: SIM2(Kitchen)
+2025-05-04 16:58:50.308 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: DANGER-SIM(Server Room)
+2025-05-04 16:58:50.308 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Initializing 3 sensors
+2025-05-04 16:58:50.309 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: SIM1
+2025-05-04 16:58:50.309 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: SIM1
+2025-05-04 16:58:50.309 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 26.499869815253465°C, humidity: 62.73907585256487%
+2025-05-04 16:58:50.309 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: SIM2
+2025-05-04 16:58:50.310 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: SIM2
+2025-05-04 16:58:50.310 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 29.611932876586074°C, humidity: 75.81563005596723%
+2025-05-04 16:58:50.310 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: DANGER-SIM
+2025-05-04 16:58:50.310 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: DANGER-SIM
+2025-05-04 16:58:50.310 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 29.167992932923276°C, humidity: 78.8986546660919%
+2025-05-04 16:58:50.311 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing email notification service
+2025-05-04 16:58:50.320 [JavaFX Application Thread] INFO  c.f.n.FireRiskNotificationHandler - Fire Risk Notification Handler initialized
+2025-05-04 16:58:50.320 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Email notification handler registered with sensor manager
+2025-05-04 16:58:50.323 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing predictor
+2025-05-04 16:58:50.325 [JavaFX Application Thread] INFO  c.fireprediction.ml.PredictorFactory - Creating predictor of type: smile
+2025-05-04 16:58:50.329 [JavaFX Application Thread] INFO  c.fireprediction.ml.PredictorFactory - Initializing predictor
+2025-05-04 16:58:50.330 [JavaFX Application Thread] INFO  c.f.ml.SmileFireRiskPredictor - Initializing SmileFireRiskPredictor
+2025-05-04 16:58:51.608 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Starting scheduled sensor readings every 60 seconds
+2025-05-04 16:58:51.619 [pool-2-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:58:51.620 [pool-2-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=26.448152468803567°C, humidity=62.42295963355639%
+2025-05-04 16:58:51.626 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM1, Location=Living Room, Temp=26.4°C, Humidity=62.4%, Time=2025-05-04T16:58:51.622898600
+2025-05-04 16:58:51.626 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM1', temperature=26.448152468803567, humidity=62.42295963355639, location='Living Room', timestamp=2025-05-04T16:58:51.622898600, riskLevel=null, riskProbability=0.0}
+2025-05-04 16:58:51.686 [ForkJoinPool.commonPool-worker-1] INFO  c.f.database.SupabaseDatabase - Loading ML model: Random Forest
+2025-05-04 16:58:51.690 [ForkJoinPool.commonPool-worker-1] WARN  c.f.FirePredictionApplication - Failed to load model, training new one: Error loading ML model: Illegal character in query at index 73: https://osrlvvrncgxutuphvyom.supabase.co/rest/v1/ml_models?name=eq.Random Forest&order=created_at.desc&limit=1
+2025-05-04 16:58:51.691 [ForkJoinPool.commonPool-worker-1] INFO  c.f.FirePredictionApplication - Training model with historical data
+2025-05-04 16:58:51.692 [ForkJoinPool.commonPool-worker-1] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:58:51.787 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:58:52.301 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 16:58:52.304 [pool-2-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=29.519033048475922°C, humidity=74.87548068261427%
+2025-05-04 16:58:52.306 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM2, Location=Kitchen, Temp=29.5°C, Humidity=74.9%, Time=2025-05-04T16:58:52.305907200
+2025-05-04 16:58:52.307 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM2', temperature=29.519033048475922, humidity=74.87548068261427, location='Kitchen', timestamp=2025-05-04T16:58:52.305907200, riskLevel=null, riskProbability=0.0}
+2025-05-04 16:58:52.806 [ForkJoinPool.commonPool-worker-1] INFO  c.f.FirePredictionApplication - Training with 742 readings
+2025-05-04 16:58:52.807 [ForkJoinPool.commonPool-worker-1] INFO  c.f.ml.SmileFireRiskPredictor - Training SmileFireRiskPredictor with 742 readings
+2025-05-04 16:58:52.847 [ForkJoinPool.commonPool-worker-1] INFO  c.f.ml.SmileFireRiskPredictor - Training RandomForest model
+2025-05-04 16:58:52.915 [ForkJoinPool.commonPool-worker-1] ERROR c.f.FirePredictionApplication - Failed to train model: Failed to train model: null
+com.fireprediction.ml.PredictorException: Failed to train model: null
+	at com.fireprediction.ml.SmileFireRiskPredictor.trainModel(SmileFireRiskPredictor.java:121)
+	at com.fireprediction.FirePredictionApplication.trainModel(FirePredictionApplication.java:687)
+	at com.fireprediction.FirePredictionApplication.lambda$0(FirePredictionApplication.java:167)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: java.lang.UnsupportedOperationException: null
+	at smile.data.vector.BaseVector.toIntArray(BaseVector.java:90)
+	at smile.data.vector.BaseVector.toIntArray(BaseVector.java:82)
+	at smile.classification.ClassLabels.fit(ClassLabels.java:106)
+	at smile.classification.RandomForest.fit(RandomForest.java:300)
+	at smile.classification.RandomForest.fit(RandomForest.java:197)
+	at com.fireprediction.ml.SmileFireRiskPredictor.trainModel(SmileFireRiskPredictor.java:76)
+	... 9 common frames omitted
+2025-05-04 16:58:52.980 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 16:58:52.981 [pool-2-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating EXTREME risk temperature: 54.1°C
+2025-05-04 16:58:52.981 [pool-2-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=54.1°C, humidity=15.5%
+2025-05-04 16:58:52.982 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=DANGER-SIM, Location=Server Room, Temp=54.1°C, Humidity=15.5%, Time=2025-05-04T16:58:52.982543600
+2025-05-04 16:58:52.982 [pool-2-thread-1] WARN  c.f.n.FireRiskNotificationHandler - ALERT: Extreme fire risk fire risk detected from sensor DANGER-SIM! Temperature: 54.1°C, Humidity: 15.5%
+2025-05-04 16:58:52.982 [pool-2-thread-1] INFO  c.f.notification.EmailService - Preparing to send fire risk notification email for risk level: Extreme fire risk
+2025-05-04 16:58:56.663 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:01.620 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:02.626 [pool-2-thread-1] INFO  c.f.notification.EmailService - Successfully sent fire risk notification email to briancondon894@gmail.com
+2025-05-04 16:59:02.627 [pool-2-thread-1] INFO  c.f.n.FireRiskNotificationHandler - Email notification sent for Extreme fire risk fire risk
+2025-05-04 16:59:02.627 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='DANGER-SIM', temperature=54.0831491812595, humidity=15.54899660986968, location='Server Room', timestamp=2025-05-04T16:58:52.982543600, riskLevel=null, riskProbability=0.0}
+2025-05-04 16:59:03.135 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 16:59:06.618 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:11.618 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:16.619 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:21.618 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:26.619 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:31.618 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:36.618 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:41.619 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:46.618 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:51.617 [pool-2-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 16:59:51.617 [pool-2-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=26.558982271031223°C, humidity=62.1441091139407%
+2025-05-04 16:59:51.618 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM1, Location=Living Room, Temp=26.6°C, Humidity=62.1%, Time=2025-05-04T16:59:51.617115500
+2025-05-04 16:59:51.618 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM1', temperature=26.558982271031223, humidity=62.1441091139407, location='Living Room', timestamp=2025-05-04T16:59:51.617115500, riskLevel=null, riskProbability=0.0}
+2025-05-04 16:59:51.620 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 16:59:51.835 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 16:59:51.836 [pool-2-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=29.524161775171915°C, humidity=73.99503043162274%
+2025-05-04 16:59:51.837 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM2, Location=Kitchen, Temp=29.5°C, Humidity=74.0%, Time=2025-05-04T16:59:51.837514200
+2025-05-04 16:59:51.837 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM2', temperature=29.524161775171915, humidity=73.99503043162274, location='Kitchen', timestamp=2025-05-04T16:59:51.837514200, riskLevel=null, riskProbability=0.0}
+2025-05-04 16:59:52.462 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 16:59:52.463 [pool-2-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating EXTREME risk temperature: 57.4°C
+2025-05-04 16:59:52.464 [pool-2-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=57.4°C, humidity=25.5%
+2025-05-04 16:59:52.464 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=DANGER-SIM, Location=Server Room, Temp=57.4°C, Humidity=25.5%, Time=2025-05-04T16:59:52.464098900
+2025-05-04 16:59:52.464 [pool-2-thread-1] INFO  c.f.n.FireRiskNotificationHandler - High risk detected but notification in cooldown period. Skipping email.
+2025-05-04 16:59:52.464 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='DANGER-SIM', temperature=57.388545468781544, humidity=25.482750926697072, location='Server Room', timestamp=2025-05-04T16:59:52.464098900, riskLevel=null, riskProbability=0.0}
+2025-05-04 16:59:52.663 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 16:59:56.619 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 17:00:01.620 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 17:00:06.618 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 17:00:07.896 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 17:00:09.451 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Stopping Fire Prediction Application
+2025-05-04 17:00:09.455 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Closing SensorManager
+2025-05-04 17:00:09.456 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Stopping scheduled sensor readings
+2025-05-04 17:00:09.456 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Closing all sensors
+2025-05-04 17:00:09.458 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: SIM1
+2025-05-04 17:00:09.458 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: SIM2
+2025-05-04 17:00:09.459 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: DANGER-SIM
+2025-05-04 17:00:09.460 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Closing Supabase database connection
+2025-05-04 17:00:09.466 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application stopped
+2025-05-04 17:27:58.762 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Starting Fire Prediction Application
+2025-05-04 17:27:58.800 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application name: Fire Prediction System
+2025-05-04 17:27:58.802 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Simulation mode: ENABLED
+2025-05-04 17:27:58.802 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing database
+2025-05-04 17:27:58.806 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - SupabaseDatabase initialized with URL: https://osrlvvrncgxutuphvyom.supabase.co
+2025-05-04 17:27:58.806 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Initializing Supabase database connection
+2025-05-04 17:28:02.187 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Successfully connected to Supabase
+2025-05-04 17:28:02.193 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing sensor manager
+2025-05-04 17:28:02.195 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Initializing SensorManager
+2025-05-04 17:28:02.195 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Setting read interval to 60 seconds
+2025-05-04 17:28:02.195 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Adding simulated sensors
+2025-05-04 17:28:02.196 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: SIM1(Living Room)
+2025-05-04 17:28:02.197 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: SIM2(Kitchen)
+2025-05-04 17:28:02.198 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Adding sensor: DANGER-SIM(Server Room)
+2025-05-04 17:28:02.198 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Initializing 3 sensors
+2025-05-04 17:28:02.199 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: SIM1
+2025-05-04 17:28:02.199 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: SIM1
+2025-05-04 17:28:02.199 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 22.32093739562117°C, humidity: 62.87285851039663%
+2025-05-04 17:28:02.199 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: SIM2
+2025-05-04 17:28:02.200 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: SIM2
+2025-05-04 17:28:02.200 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 29.883356368843224°C, humidity: 56.539973559422684%
+2025-05-04 17:28:02.200 [JavaFX Application Thread] DEBUG c.f.sensor.SensorManager - Initializing sensor: DANGER-SIM
+2025-05-04 17:28:02.200 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Initializing simulated sensor: DANGER-SIM
+2025-05-04 17:28:02.200 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor initialized with base temp: 22.446449688737687°C, humidity: 51.71598215154475%
+2025-05-04 17:28:02.201 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing email notification service
+2025-05-04 17:28:02.209 [JavaFX Application Thread] INFO  c.f.n.FireRiskNotificationHandler - Fire Risk Notification Handler initialized
+2025-05-04 17:28:02.209 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Email notification handler registered with sensor manager
+2025-05-04 17:28:02.212 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Initializing predictor
+2025-05-04 17:28:02.214 [JavaFX Application Thread] INFO  c.fireprediction.ml.PredictorFactory - Creating predictor of type: smile
+2025-05-04 17:28:02.217 [JavaFX Application Thread] INFO  c.fireprediction.ml.PredictorFactory - Initializing predictor
+2025-05-04 17:28:02.217 [JavaFX Application Thread] INFO  c.f.ml.SmileFireRiskPredictor - Initializing SmileFireRiskPredictor
+2025-05-04 17:28:03.582 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Starting scheduled sensor readings every 60 seconds
+2025-05-04 17:28:03.592 [pool-2-thread-1] DEBUG c.f.sensor.SensorManager - Reading data from all sensors
+2025-05-04 17:28:03.593 [pool-2-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=22.39218690032853°C, humidity=63.37530916418849%
+2025-05-04 17:28:03.599 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM1, Location=Living Room, Temp=22.4°C, Humidity=63.4%, Time=2025-05-04T17:28:03.596705100
+2025-05-04 17:28:03.600 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM1', temperature=22.39218690032853, humidity=63.37530916418849, location='Living Room', timestamp=2025-05-04T17:28:03.596705100, riskLevel=null, riskProbability=0.0}
+2025-05-04 17:28:03.647 [ForkJoinPool.commonPool-worker-1] INFO  c.f.database.SupabaseDatabase - Loading ML model: Random Forest
+2025-05-04 17:28:03.651 [ForkJoinPool.commonPool-worker-1] WARN  c.f.FirePredictionApplication - Failed to load model, training new one: Error loading ML model: Illegal character in query at index 73: https://osrlvvrncgxutuphvyom.supabase.co/rest/v1/ml_models?name=eq.Random Forest&order=created_at.desc&limit=1
+2025-05-04 17:28:03.652 [ForkJoinPool.commonPool-worker-1] INFO  c.f.FirePredictionApplication - Training model with historical data
+2025-05-04 17:28:03.652 [ForkJoinPool.commonPool-worker-1] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 17:28:03.827 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 17:28:04.202 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 17:28:04.203 [pool-2-thread-1] DEBUG c.f.sensor.SimulatedSensor - Simulated sensor reading: temp=29.887367171942916°C, humidity=55.50609054681969%
+2025-05-04 17:28:04.204 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=SIM2, Location=Kitchen, Temp=29.9°C, Humidity=55.5%, Time=2025-05-04T17:28:04.204714800
+2025-05-04 17:28:04.205 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='SIM2', temperature=29.887367171942916, humidity=55.50609054681969, location='Kitchen', timestamp=2025-05-04T17:28:04.204714800, riskLevel=null, riskProbability=0.0}
+2025-05-04 17:28:05.424 [ForkJoinPool.commonPool-worker-1] INFO  c.f.FirePredictionApplication - Training with 748 readings
+2025-05-04 17:28:05.424 [ForkJoinPool.commonPool-worker-1] INFO  c.f.ml.SmileFireRiskPredictor - Training SmileFireRiskPredictor with 748 readings
+2025-05-04 17:28:05.454 [ForkJoinPool.commonPool-worker-1] INFO  c.f.ml.SmileFireRiskPredictor - Training RandomForest model
+2025-05-04 17:28:05.477 [ForkJoinPool.commonPool-worker-1] ERROR c.f.FirePredictionApplication - Failed to train model: Failed to train model: null
+com.fireprediction.ml.PredictorException: Failed to train model: null
+	at com.fireprediction.ml.SmileFireRiskPredictor.trainModel(SmileFireRiskPredictor.java:121)
+	at com.fireprediction.FirePredictionApplication.trainModel(FirePredictionApplication.java:677)
+	at com.fireprediction.FirePredictionApplication.lambda$start$0(FirePredictionApplication.java:167)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188)
+Caused by: java.lang.UnsupportedOperationException: null
+	at smile.data.vector.BaseVector.toIntArray(BaseVector.java:90)
+	at smile.data.vector.BaseVector.toIntArray(BaseVector.java:82)
+	at smile.classification.ClassLabels.fit(ClassLabels.java:106)
+	at smile.classification.RandomForest.fit(RandomForest.java:300)
+	at smile.classification.RandomForest.fit(RandomForest.java:197)
+	at com.fireprediction.ml.SmileFireRiskPredictor.trainModel(SmileFireRiskPredictor.java:76)
+	... 9 common frames omitted
+2025-05-04 17:28:05.779 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 17:28:05.784 [pool-2-thread-1] WARN  c.f.sensor.DangerousSimulatedSensor - Generating EXTREME risk temperature: 51.3°C
+2025-05-04 17:28:05.784 [pool-2-thread-1] DEBUG c.f.sensor.DangerousSimulatedSensor - Dangerous simulated sensor reading: temp=51.3°C, humidity=15.2%
+2025-05-04 17:28:05.784 [pool-2-thread-1] INFO  c.f.sensor.SensorManager - READING: Sensor=DANGER-SIM, Location=Server Room, Temp=51.3°C, Humidity=15.2%, Time=2025-05-04T17:28:05.784527
+2025-05-04 17:28:05.785 [pool-2-thread-1] WARN  c.f.n.FireRiskNotificationHandler - ALERT: Extreme fire risk fire risk detected from sensor DANGER-SIM! Temperature: 51.3°C, Humidity: 15.2%
+2025-05-04 17:28:05.785 [pool-2-thread-1] INFO  c.f.notification.EmailService - Preparing to send fire risk notification email for risk level: Extreme fire risk
+2025-05-04 17:28:08.591 [JavaFX Application Thread] DEBUG c.f.database.SupabaseDatabase - Getting sensor readings from null to null
+2025-05-04 17:28:09.523 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Stopping Fire Prediction Application
+2025-05-04 17:28:09.527 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Closing SensorManager
+2025-05-04 17:28:09.528 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Stopping scheduled sensor readings
+2025-05-04 17:28:11.012 [pool-2-thread-1] INFO  c.f.notification.EmailService - Successfully sent fire risk notification email to briancondon894@gmail.com
+2025-05-04 17:28:11.013 [pool-2-thread-1] INFO  c.f.n.FireRiskNotificationHandler - Email notification sent for Extreme fire risk fire risk
+2025-05-04 17:28:11.013 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Saving sensor reading: SensorReading{sensorId='DANGER-SIM', temperature=51.338962205908174, humidity=15.164880550758584, location='Server Room', timestamp=2025-05-04T17:28:05.784527, riskLevel=null, riskProbability=0.0}
+2025-05-04 17:28:11.218 [pool-2-thread-1] DEBUG c.f.database.SupabaseDatabase - Successfully saved sensor reading
+2025-05-04 17:28:11.219 [JavaFX Application Thread] INFO  c.f.sensor.SensorManager - Closing all sensors
+2025-05-04 17:28:11.220 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: SIM1
+2025-05-04 17:28:11.220 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: SIM2
+2025-05-04 17:28:11.221 [JavaFX Application Thread] INFO  c.f.sensor.SimulatedSensor - Simulated sensor closed: DANGER-SIM
+2025-05-04 17:28:11.221 [JavaFX Application Thread] INFO  c.f.database.SupabaseDatabase - Closing Supabase database connection
+2025-05-04 17:28:11.223 [JavaFX Application Thread] INFO  c.f.FirePredictionApplication - Application stopped

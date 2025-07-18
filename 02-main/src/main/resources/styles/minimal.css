@@ -1,0 +1,523 @@
+/* Enhanced JavaFX styling for Fire Prediction GUI */
+
+/* Define color variables for consistent theming */
+.root {
+    /* Base colors */
+    -fx-base-dark: #0F1923;
+    -fx-sidebar-color: #1E2A38;
+    -fx-card-bg: #1E2A38;
+    -fx-border-color: #2A3747;
+    border-color: #2A3747;
+    
+    /* Text colors */
+    -fx-text-color: white;
+    -fx-secondary-text: #B0BEC5;
+    
+    /* Accent colors */
+    -fx-accent: #FF5722;
+    -fx-accent-hover: #E64A19;
+    
+    /* Status colors */
+    -fx-low-risk: #4CAF50;
+    -fx-moderate-risk: #FFC107;
+    -fx-high-risk: #FF9800;
+    -fx-extreme-risk: #F44336;
+    -fx-success: #4CAF50;
+    -fx-warning: #FFC107;
+    -fx-danger: #F44336;
+    
+    /* Transition duration */
+    -fx-transition-duration: 200ms;
+    transition-duration: 200ms;
+    
+    /* Root container */
+    -fx-background-color: -fx-base-dark;
+    background-color: #0F1923;
+    -fx-text-fill: -fx-text-color;
+    color: white;
+    -fx-alignment: CENTER;
+    -fx-font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: #1E2A38;
+    background-color: #1E2A38;
+    -fx-text-fill: white;
+    color: white;
+    -fx-padding: 8px 15px;
+    padding: 8px 15px;
+    -fx-background-radius: 4px;
+    border-radius: 4px;
+    -fx-cursor: hand;
+    cursor: pointer;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.button:hover {
+    -fx-background-color: #FF5722;
+    background-color: #FF5722;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 5, 0, 0, 2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.button:pressed {
+    -fx-background-color: #E64A19;
+    background-color: #E64A19;
+}
+
+/* Navigation buttons */
+.nav-button {
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-text-fill: white;
+    color: white;
+    -fx-padding: 10px 15px;
+    padding: 10px 15px;
+    -fx-font-size: 14px;
+    font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    text-align: left;
+    -fx-border-width: 0 0 0 3px;
+    border-width: 0 0 0 3px;
+    border-left-width: 3px;
+    -fx-border-color: transparent;
+    border-color: transparent;
+    border-left-color: transparent;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-button.active {
+    -fx-border-color: #FF5722;
+    border-left-color: #FF5722;
+    -fx-background-color: rgba(255, 87, 34, 0.2);
+    background-color: rgba(255, 87, 34, 0.2);
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: white;
+    color: white;
+}
+
+.title-label {
+    -fx-font-size: 18px;
+    font-size: 18px;
+    -fx-font-weight: bold;
+    font-weight: bold;
+    -fx-text-fill: white !important;
+    color: white !important;
+}
+
+.subtitle-label {
+    -fx-font-size: 14px;
+    font-size: 14px;
+    -fx-text-fill: #B0BEC5;
+    color: #B0BEC5;
+}
+
+/* Dashboard heading */
+.dashboard-heading {
+    -fx-text-fill: white;
+    color: white;
+    -fx-font-size: 22px;
+    font-size: 22px;
+    -fx-font-weight: bold;
+    font-weight: bold;
+    -fx-padding: 10px 0;
+    padding: 10px 0;
+    -fx-background-color: transparent;
+    background-color: transparent;
+}
+
+/* Table styling */
+.table-view {
+    -fx-background-color: #1E2A38;
+    background-color: #1E2A38;
+    -fx-table-cell-border-color: #2A3747;
+    border-color: #2A3747;
+    -fx-background-radius: 5px;
+    border-radius: 5px;
+    -fx-padding: 0;
+    padding: 0;
+    -fx-control-inner-background: #1E2A38;
+    -fx-table-header-border-color: #2A3747;
+    -fx-table-border-color: #2A3747;
+}
+
+.table-view .column-header {
+    -fx-background-color: #2A3747;
+    background-color: #2A3747;
+    -fx-text-fill: white;
+    color: white;
+    -fx-font-weight: bold;
+    font-weight: bold;
+    -fx-padding: 8px;
+    padding: 8px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    color: white;
+    -fx-font-weight: bold;
+    font-weight: bold;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #1E2A38 !important;
+    background-color: #1E2A38 !important;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #263238 !important;
+    background-color: #263238 !important;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #FF5722;
+    background-color: #FF5722;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: white;
+    color: white;
+    -fx-alignment: CENTER_LEFT;
+    text-align: left;
+    -fx-padding: 5px 10px;
+    padding: 5px 10px;
+    -fx-border-color: transparent;
+    border-color: transparent;
+}
+
+.table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: white;
+    color: white;
+}
+
+/* Fix for empty table cells */
+.table-row-cell:empty {
+    -fx-background-color: #1E2A38;
+    background-color: #1E2A38;
+}
+
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+    border-width: 0px;
+}
+
+/* Chart styling */
+.chart {
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-padding: 10px;
+    padding: 10px;
+}
+
+.chart-plot-background {
+    -fx-background-color: #1E2A38;
+    background-color: #1E2A38;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: #2A3747;
+    stroke: #2A3747;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: #2A3747;
+    stroke: #2A3747;
+}
+
+.axis {
+    -fx-tick-label-fill: white;
+    color: white;
+}
+
+.axis-label {
+    -fx-text-fill: white;
+    color: white;
+}
+
+/* Fix for chart legend text */
+.chart-legend {
+    -fx-background-color: rgba(30, 42, 56, 0.7);
+    background-color: rgba(30, 42, 56, 0.7);
+    -fx-padding: 8px;
+    padding: 8px;
+    -fx-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.chart-legend-item {
+    -fx-text-fill: white;
+    color: white;
+}
+
+.chart-legend-item-symbol {
+    -fx-padding: 5px;
+    padding: 5px;
+}
+
+.chart-pie-label {
+    -fx-fill: white;
+    fill: white;
+    -fx-font-size: 12px;
+    font-size: 12px;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: white;
+    stroke: white;
+    -fx-fill: white;
+    fill: white;
+}
+
+.default-color0.chart-series-line { -fx-stroke: #4CAF50; stroke: #4CAF50; }
+.default-color1.chart-series-line { -fx-stroke: #2196F3; stroke: #2196F3; }
+.default-color2.chart-series-line { -fx-stroke: #FFC107; stroke: #FFC107; }
+.default-color3.chart-series-line { -fx-stroke: #FF5722; stroke: #FF5722; }
+
+.default-color0.chart-line-symbol { -fx-background-color: #4CAF50; background-color: #4CAF50; }
+.default-color1.chart-line-symbol { -fx-background-color: #2196F3; background-color: #2196F3; }
+.default-color2.chart-line-symbol { -fx-background-color: #FFC107; background-color: #FFC107; }
+.default-color3.chart-line-symbol { -fx-background-color: #FF5722; background-color: #FF5722; }
+
+/* Card styling */
+.card {
+    -fx-background-color: #1E2A38;
+    background-color: #1E2A38;
+    -fx-background-radius: 10px;
+    border-radius: 10px;
+    -fx-padding: 15px;
+    padding: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+/* Risk level colors */
+.risk-level {
+    -fx-font-weight: bold;
+    font-weight: bold;
+    -fx-padding: 5px 10px;
+    padding: 5px 10px;
+    -fx-background-radius: 5px;
+    border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 3, 0, 0, 1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.low-risk, .risk-level-low {
+    -fx-background-color: #4CAF50 !important;
+    background-color: #4CAF50 !important;
+    -fx-text-fill: white !important;
+    color: white !important;
+    -fx-font-weight: bold;
+    font-weight: bold;
+}
+
+.moderate-risk, .risk-level-moderate {
+    -fx-background-color: #FFC107 !important;
+    background-color: #FFC107 !important;
+    -fx-text-fill: #333333 !important;
+    color: #333333 !important;
+    -fx-font-weight: bold;
+    font-weight: bold;
+}
+
+.high-risk, .risk-level-high {
+    -fx-background-color: #FF9800 !important;
+    background-color: #FF9800 !important;
+    -fx-text-fill: #333333 !important;
+    color: #333333 !important;
+    -fx-font-weight: bold;
+    font-weight: bold;
+}
+
+.extreme-risk, .risk-level-extreme {
+    -fx-background-color: #F44336 !important;
+    background-color: #F44336 !important;
+    -fx-text-fill: white !important;
+    color: white !important;
+    -fx-font-weight: bold;
+    font-weight: bold;
+}
+
+/* Sidebar styling */
+.sidebar {
+    -fx-background-color: #1E2A38;
+    background-color: #1E2A38;
+    -fx-padding: 20px 0;
+    padding: 20px 0;
+}
+
+/* Main content area */
+.main-content {
+    -fx-background-color: -fx-base-dark;
+    background-color: #0F1923;
+    -fx-padding: 20px;
+    padding: 20px;
+    -fx-alignment: CENTER;
+    -fx-max-width: 1200px;
+    max-width: 1200px;
+    -fx-margin: 0 auto;
+}
+
+/* Responsive layout */
+.responsive-container {
+    -fx-alignment: CENTER;
+    -fx-fill-width: true;
+    -fx-max-width: 1200px;
+    max-width: 1200px;
+    -fx-padding: 0 20px;
+    padding: 0 20px;
+    -fx-spacing: 20px;
+    margin: 0 auto;
+}
+
+/* Center content in panels */
+.content-panel {
+    -fx-background-color: -fx-base-dark;
+    background-color: #0F1923;
+    -fx-padding: 20px;
+    padding: 20px;
+    -fx-alignment: CENTER;
+    -fx-max-width: 1200px;
+    max-width: 1200px;
+    -fx-margin: 0 auto;
+}
+.dashboard-panel, .readings-panel, .analytics-panel, .settings-panel {
+    -fx-alignment: CENTER;
+    -fx-fill-width: true;
+    -fx-content-display: CENTER;
+    -fx-padding: 10px;
+    padding: 10px;
+}
+
+/* Metric cards */
+.metric-card {
+    -fx-background-color: #1E2A38;
+    background-color: #1E2A38;
+    -fx-background-radius: 10px;
+    border-radius: 10px;
+    -fx-padding: 15px;
+    padding: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 8, 0, 0, 3);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.metric-title {
+    -fx-font-size: 14px;
+    font-size: 14px;
+    -fx-text-fill: #B0BEC5;
+    color: #B0BEC5;
+}
+
+.metric-value {
+    -fx-font-size: 24px;
+    font-size: 24px;
+    -fx-font-weight: bold;
+    font-weight: bold;
+}
+
+.metric-trend {
+    -fx-font-size: 12px;
+    font-size: 12px;
+}
+
+/* Tab styling */
+.tab-pane {
+    -fx-background-color: -fx-base-dark;
+    background-color: #0F1923;
+}
+
+.tab {
+    -fx-background-color: -fx-sidebar-color;
+    background-color: #1E2A38;
+    -fx-padding: 8px 15px;
+    padding: 8px 15px;
+}
+
+.tab-header-area {
+    -fx-background-color: -fx-base-dark;
+    background-color: #0F1923;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: -fx-base-dark;
+    background-color: #0F1923;
+}
+
+.tab-pane .tab {
+    -fx-background-color: -fx-sidebar-color;
+    background-color: #1E2A38;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: -fx-accent;
+    background-color: #FF5722;
+}
+
+.tab .tab-label {
+    -fx-text-fill: -fx-text-color;
+    color: white;
+}
+
+/* Scrollbar styling */
+.scroll-bar {
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-background-radius: 10px;
+    border-radius: 10px;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 10px;
+    border-radius: 10px;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    background-color: transparent;
+    -fx-padding: 0 5px;
+    padding: 0 5px;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Transition effects */
+.fade-in {
+    -fx-opacity: 1;
+    opacity: 1;
+    -fx-transition: -fx-opacity 500ms;
+    transition: opacity 500ms;
+}
+
+.fade-out {
+    -fx-opacity: 0;
+    opacity: 0;
+    -fx-transition: -fx-opacity 500ms;
+    transition: opacity 500ms;
+}
